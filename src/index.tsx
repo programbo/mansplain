@@ -1,7 +1,6 @@
 import qs from 'qs'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import TinyUrl from 'node-url-shortener'
 
 import { Mansplain } from './mansplain'
 
@@ -17,7 +16,7 @@ interface IAppState {
 class App extends React.PureComponent<IAppProps, IAppState> {
   defaultShe = 'Are you feeling my speech bub...'
   defaultMe = 'Nope.'
-  public constructor(props) {
+  public constructor(props: IAppProps) {
     super(props)
     const { she = this.defaultShe, me = this.defaultMe } = qs.parse(
       window.location.hash.substr(1),
@@ -41,7 +40,8 @@ class App extends React.PureComponent<IAppProps, IAppState> {
             <label>Well, she said</label>
             <input
               type="text"
-              name="shesaid"
+              name="shesaid-input"
+              id="shesaid-input"
               onChange={this.handleUpdateShe}
               placeholder={she}
             />
@@ -50,25 +50,30 @@ class App extends React.PureComponent<IAppProps, IAppState> {
             <label>so I said</label>
             <input
               type="text"
-              name="isaid"
+              name="isaid-input"
+              id="isaid-input"
               onChange={this.handleUpdateMe}
               placeholder={me}
             />
           </div>
           <div className="share">
-            Share this: <a href={shareUrl}>{shareUrl}</a>
+            Share this: <a href={shareUrl} target="_blank">{shareUrl}</a>
+          </div>
+          <div className="credits">
+            Original image stolen from<br />
+            <a href="https://twitter.com/newscientist/status/1057790476806471681" target="_blank">https://twitter.com/newscientist/status/1057790476806471681</a>
           </div>
         </div>
       </div>
     )
   }
-  private handleUpdateShe = e => {
+  private handleUpdateShe = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState(
       { she: e.currentTarget.value || this.defaultShe },
       this.updateShareUrl,
     )
   }
-  private handleUpdateMe = e => {
+  private handleUpdateMe = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState(
       { me: e.currentTarget.value || this.defaultMe },
       this.updateShareUrl,

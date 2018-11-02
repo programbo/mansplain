@@ -1,5 +1,5 @@
 import * as React from 'react'
-import ScaleText from 'react-scale-text'
+const ScaleText = require('react-scale-text')
 
 interface iMansplain {
   sheSaid: string
@@ -17,6 +17,7 @@ const speechStyle: React.CSSProperties = {
   position: 'absolute',
   fontFamily: "'Poor Story', cursive",
   fontSize: 200,
+  cursor: 'pointer',
 }
 
 export class Mansplain extends React.PureComponent<iMansplain, never> {
@@ -680,6 +681,7 @@ export class Mansplain extends React.PureComponent<iMansplain, never> {
         </svg>
         <div
           id="shesaid"
+          onClick={this.handleClickShe}
           style={{
             ...speechStyle,
             top: '42vw',
@@ -694,6 +696,7 @@ export class Mansplain extends React.PureComponent<iMansplain, never> {
         </div>
         <div
           id="isaid"
+          onClick={this.handleClickMe}
           style={{
             ...speechStyle,
             top: '7vw',
@@ -709,5 +712,11 @@ export class Mansplain extends React.PureComponent<iMansplain, never> {
         </div>
       </div>
     )
+  }
+  private handleClickShe = (e: React.MouseEvent<HTMLDivElement>) => {
+    setTimeout(() => document.getElementById('shesaid-input').focus(), 100)
+  }
+  private handleClickMe = (e: React.MouseEvent<HTMLDivElement>) => {
+    setTimeout(() => document.getElementById('isaid-input').focus(), 100)
   }
 }
