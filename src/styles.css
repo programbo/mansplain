@@ -30,7 +30,7 @@ body {
 .comments {
   display: flex;
   width: 100%;
-  padding: 3vw 9vw;
+  padding: 0 9vw 3vw;
   box-sizing: border-box;
   justify-content: center;
   flex-direction: column;

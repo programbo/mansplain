@@ -91,11 +91,12 @@ class App extends React.PureComponent<IAppProps, IAppState> {
       e.currentTarget.blur()
       const image = document.querySelector('.image')
       if (image) {
-        window.scrollTo({
-          top: image.getBoundingClientRect().y,
-          left: 0,
-          behavior: 'smooth'
-        })
+        const rect: DOMRect = image.getBoundingClientRect()
+         window.scrollTo({
+           top: rect.top + window.scrollY,
+           left: 0,
+           behavior: 'smooth'
+         })
       }
     }
   }
