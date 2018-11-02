@@ -26,11 +26,7 @@ export class Mansplain extends React.PureComponent<iMansplain, never> {
     const { sheSaid = 'I think...', iSaid = 'Nope', style } = this.props
     return (
       <div style={{ position: 'relative' }}>
-        <img
-          src="https://files-iyijjnvfna.now.sh/mansplain.svg"
-          alt=""
-          style={style}
-        />
+        <img src="https://files-iyijjnvfna.now.sh/mansplain.svg" alt="" style={style} />
         <div
           id="shesaid"
           onClick={this.handleClickShe}
