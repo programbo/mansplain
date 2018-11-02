@@ -30,11 +30,6 @@ class App extends React.PureComponent<IAppProps, IAppState> {
     const { she, me, shareUrl } = this.state
     return (
       <div className="App">
-        <Mansplain
-          style={{ width: '100vw', display: 'block' }}
-          sheSaid={she}
-          iSaid={me}
-        />
         <div className="comments">
           <h1>Tell your story</h1>
           <div className="comment">
@@ -59,6 +54,12 @@ class App extends React.PureComponent<IAppProps, IAppState> {
               placeholder={me}
             />
           </div>
+          </div>
+        <Mansplain
+          style={{ width: '100vw', display: 'block' }}
+          sheSaid={she}
+          iSaid={me}
+        />
           <div className="share"><label htmlFor="">Share your story: </label>
           {shareUrl 
               ? <div className="share__group">
@@ -78,7 +79,6 @@ class App extends React.PureComponent<IAppProps, IAppState> {
             </a>
           </div>
         </div>
-      </div>
     )
   }
   private handleUpdateShe = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -89,11 +89,14 @@ class App extends React.PureComponent<IAppProps, IAppState> {
   private handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.currentTarget.blur()
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-      })
+      const image = document.querySelector('.image')
+      if (image) {
+        window.scrollTo({
+          top: image.getBoundingClientRect().y,
+          left: 0,
+          behavior: 'smooth'
+        })
+      }
     }
   }
   private handleUpdateMe = (e: React.ChangeEvent<HTMLInputElement>) => {
