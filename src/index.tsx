@@ -44,6 +44,7 @@ class App extends React.PureComponent<IAppProps, IAppState> {
               name="shesaid-input"
               id="shesaid-input"
               onChange={this.handleUpdateShe}
+              onKeyDown={this.handleKeyDown}
               placeholder={she}
             />
           </div>
@@ -54,6 +55,7 @@ class App extends React.PureComponent<IAppProps, IAppState> {
               name="isaid-input"
               id="isaid-input"
               onChange={this.handleUpdateMe}
+              onKeyDown={this.handleKeyDown}
               placeholder={me}
             />
           </div>
@@ -83,6 +85,16 @@ class App extends React.PureComponent<IAppProps, IAppState> {
     this.setState(
       { she: e.currentTarget.value || this.defaultShe, shareUrl: undefined }
     )
+  }
+  private handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.currentTarget.blur()
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
+    }
   }
   private handleUpdateMe = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState(
