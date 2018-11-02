@@ -1,2 +1,0 @@
-# mansplain
-Created with CodeSandbox
