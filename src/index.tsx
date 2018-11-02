@@ -64,8 +64,9 @@ class App extends React.PureComponent<IAppProps, IAppState> {
             <a href="https://twitter.com/newscientist/status/1057790476806471681" target="_blank">https://twitter.com/newscientist/status/1057790476806471681</a>
           </div>
           <div className="credits">
-            Built and deployed from<br />
-            <a href="https://codesandbox.io/s/py4mzyxq7x" target="_blank">https://codesandbox.io/s/py4mzyxq7x</a>
+            <a href="https://codesandbox.io/s/github/programbo/mansplain/tree/master/">
+              <img alt="Edit mansplain" src="https://codesandbox.io/static/img/play-codesandbox.svg" />
+            </a>
           </div>
         </div>
       </div>
