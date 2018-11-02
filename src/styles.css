@@ -48,6 +48,10 @@ label {
   font-weight: 600;
   line-height: 2;
 }
+.share,
+.credits {
+  padding: 50px 3vw 0;
+}
 input {
   text-align: left;
   padding: 0.25em 0.5em;
@@ -57,7 +61,4 @@ input {
   font-family: 'Poor Story', cursive;
   border: 1px dashed #ddd;
   border-style: none none dashed;
-}
-.share {
-  padding: 50px;
 }
