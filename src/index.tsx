@@ -24,7 +24,7 @@ class App extends React.PureComponent<IAppProps, IAppState> {
     this.state = { she, me }
   }
   public componentDidMount() {
-    this.updateShareUrl()
+    // this.updateShareUrl()
   }
   public render() {
     const { she, me, shareUrl } = this.state
@@ -36,6 +36,7 @@ class App extends React.PureComponent<IAppProps, IAppState> {
           iSaid={me}
         />
         <div className="comments">
+          <h1>Tell your story</h1>
           <div className="comment">
             <label>Well, she said</label>
             <input
@@ -47,7 +48,7 @@ class App extends React.PureComponent<IAppProps, IAppState> {
             />
           </div>
           <div className="comment">
-            <label>so I said</label>
+            <label>&hellip;so I said</label>
             <input
               type="text"
               name="isaid-input"
@@ -56,11 +57,17 @@ class App extends React.PureComponent<IAppProps, IAppState> {
               placeholder={me}
             />
           </div>
-          <div className="share">
-            Share this: <a href={shareUrl} target="_blank">{shareUrl}</a>
+          <div className="share"><label htmlFor="">Share your story: </label>
+          {shareUrl 
+              ? <div className="share__group">
+                 <input type="text" value={shareUrl} readOnly />
+                 <a href={shareUrl} title="Open this link in a new tab" target="_blank">🚀</a>
+               </div>
+            : <button className="share-button" onClick={this.updateShareUrl}>Get a share url</button>
+          }
           </div>
           <div className="credits">
-            Original image stolen from<br />
+            Inspiration and original image from<br />
             <a href="https://twitter.com/newscientist/status/1057790476806471681" target="_blank">https://twitter.com/newscientist/status/1057790476806471681</a>
           </div>
           <div className="credits">
@@ -74,23 +81,20 @@ class App extends React.PureComponent<IAppProps, IAppState> {
   }
   private handleUpdateShe = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState(
-      { she: e.currentTarget.value || this.defaultShe },
-      this.updateShareUrl,
+      { she: e.currentTarget.value || this.defaultShe, shareUrl: undefined }
     )
   }
   private handleUpdateMe = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState(
-      { me: e.currentTarget.value || this.defaultMe },
-      this.updateShareUrl,
+      { me: e.currentTarget.value || this.defaultMe, shareUrl: undefined }
     )
   }
   private updateShareUrl = () => {
     const origin = location.origin
     const { she, me } = this.state
     const query = qs.stringify({ she, me })
-    window.location.hash = query
     const shareUrl = `${origin}#${query}`
-    this.setState({ shareUrl })
+    this.setState({ shareUrl })    
   }
 }
 

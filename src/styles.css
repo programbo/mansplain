@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poor+Story');
+@import url("https://fonts.googleapis.com/css?family=Oswald:700|Poor+Story");
 
 body {
   display: flex;
@@ -9,13 +9,15 @@ body {
   align-content: stretch;
   align-items: stretch;
   justify-content: stretch;
+  background-color: lightblue;
 }
 #root {
   width: 100%;
 }
 .App {
-  font-family: sans-serif;
   text-align: center;
+  font-family: "Oswald", sans-serif;
+  color: darkslategrey;
 }
 .centered {
   position: absolute;
@@ -28,17 +30,40 @@ body {
 .comments {
   display: flex;
   width: 100%;
-  padding: 100px 0;
+  padding: 3vw 9vw;
+  box-sizing: border-box;
   justify-content: center;
   flex-direction: column;
+}
+h1 {
+  font-size: 8.8vw;
 }
 .comment {
   display: flex;
   width: 100%;
-  max-width: 500px;
+  max-width: 940px;
   text-align: center;
   align-self: center;
   margin-bottom: 1em;
+  flex-direction: column;
+  font-size: 4.4vw;
+}
+@media screen and (min-width: 640px) {
+  h1 {
+    font-size: 6vw;
+  }
+  .comment {
+    flex-direction: row;
+    font-size: 3vw;
+  }
+}
+@media screen and (min-width: 960px) {
+  h1 {
+    font-size: 72px;
+  }
+  .comment {
+    font-size: 36px;
+  }
 }
 label {
   font-size: 1.25em;
@@ -47,18 +72,55 @@ label {
   display: inline-block;
   font-weight: 600;
   line-height: 2;
+  font-style: italic;
+}
+.share__group {
+  display: flex;
+  justify-content: center;
+  white-space: nowrap;
+}
+.share__group a {
+  font-size: 2em;
+  text-decoration: none;
+  width: 2em;
 }
 .share,
 .credits {
-  padding: 50px 3vw 0;
+  padding: 6vw 3vw 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 input {
   text-align: left;
   padding: 0.25em 0.5em;
+  box-sizing: border-box;
   font-size: 1.5em;
   width: 100%;
-  max-width: 500px;
-  font-family: 'Poor Story', cursive;
-  border: 1px dashed #ddd;
-  border-style: none none dashed;
+  max-width: 900px;
+  font-family: "Poor Story", cursive;
+  border-style: none;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+input:focus {
+  background-color: white;
+}
+.share-button {
+  color: darkblue;
+  font-size: 1.3em;
+  border-style: none;
+  padding: 0;
+  margin: 0 0.25em;
+  border-bottom: 1px solid darkblue;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: "Oswald", sans-serif;
+}
+.speech:hover {
+  color: black;
+}
+a {
+  color: darkblue;
 }
