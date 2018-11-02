@@ -46,7 +46,7 @@ label {
   white-space: nowrap;
   display: inline-block;
   font-weight: 600;
-  line-height: 3;
+  line-height: 2;
 }
 input {
   text-align: left;
@@ -57,4 +57,7 @@ input {
   font-family: 'Poor Story', cursive;
   border: 1px dashed #ddd;
   border-style: none none dashed;
+}
+.share {
+  padding: 100px 50px;
 }
