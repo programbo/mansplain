@@ -66,9 +66,11 @@ export class Mansplain extends React.PureComponent<iMansplain, never> {
     )
   }
   private handleClickShe = (e: React.MouseEvent<HTMLDivElement>) => {
-    setTimeout(() => document.getElementById('shesaid-input').focus(), 100)
+    const input = document.getElementById('shesaid-input')
+    input && input.focus()
   }
   private handleClickMe = (e: React.MouseEvent<HTMLDivElement>) => {
-    setTimeout(() => document.getElementById('isaid-input').focus(), 100)
+    const input = document.getElementById('isaid-input')
+    input && input.focus()
   }
 }
